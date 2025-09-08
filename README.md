@@ -1,58 +1,67 @@
-1. Contexte et Motivation 
-La détermination du groupe sanguin est essentielle en médecine, notamment pour les 
-transfusions, les greffes et les urgences. Les méthodes traditionnelles (tests sérologiques) sont 
-coûteuses et longues. 
-Ce projet explore une approche innovante utilisant l’apprentissage automatique pour prédire le 
-groupe sanguin à partir des empreintes digitales, une solution non invasive, rapide et 
-économique. Les empreintes digitales, uniques et riches en caractéristiques (minuties, boucles, 
-arches), permettent une classification fiable. 
-2. Description du Dataset 
-Le dataset utilisé pour ce projet provient de Kaggle et est intitulé "Finger Print based Blood 
-Group Dataset". 
-Lien :https://www.kaggle.com/datasets/rajumavinmar/finger-print-based-blood-group-dataset/
- data 
-Ce dataset contient des images d'empreintes digitales accompagnées des informations relatives 
-aux groupes sanguins des individus. Voici une description des principales caractéristiques du 
-dataset : 
-• Images des empreintes digitales : Chaque enregistrement du dataset est constitué d'une 
-image d'empreinte digitale. Ces images sont de haute qualité et sont utilisées pour 
-extraire les caractéristiques spécifiques qui définissent chaque empreinte. 
-• Groupes sanguins associés : Chaque image d'empreinte digitale est étiquetée avec le 
-groupe sanguin correspondant, ce qui permet de créer un modèle de classification 
-supervisé. Les groupes sanguins sont classés dans les catégories ABO (A, B, AB, O) et 
-Rhésus (positif ou négatif). 
-• Caractéristiques des empreintes digitales : Bien que les caractéristiques spécifiques ne 
-soient pas extraites de manière explicite dans ce dataset, elles peuvent être dérivées des 
-images à l'aide de techniques de traitement d'images et d'extraction de caractéristiques, 
-telles que les minuties, les boucles, et autres caractéristiques de la texture et des motifs 
-des empreintes. 
-Le dataset contient plus de 500 images d'empreintes digitales pour chaque groupe sanguin 
-spécifique. 
-3. Objectifs du projet 
-L'objectif principal de ce projet est de prédire le groupe sanguin d'un individu en fonction de son 
-empreinte digitale à l'aide de modèles de machine learning. 
-4. Méthodologie 
-a. Prétraitement des images 
-• Conversion des images d'empreintes digitales en une forme numérique qui peut être 
-traitée par les algorithmes de machine learning. 
-• Normalisation et redimensionnement des images pour assurer une cohérence des 
-dimensions. 
-b. Extraction des caractéristiques 
-• Utilisation de techniques de traitement d'image pour extraire des caractéristiques 
-importantes telles que les minuties, les boucles et les arches des empreintes 
-digitales. 
-c. Entraînement des modèles 
-• K-Nearest Neighbors (KNN) : Un algorithme de classification basé sur la proximité 
-des exemples dans l'espace des caractéristiques. Il sera utilisé pour prédire le groupe 
-sanguin en fonction des k voisins les plus proches. 
-• Support Vector Machine (SVM) : Un autre algorithme de classification qui trouve une 
-hyperplan pour séparer les différentes classes (groupes sanguins) dans l'espace des 
-caractéristiques. 
-• Random Forest (RF) : Un modèle d'ensemble qui utilise plusieurs arbres de décision 
-pour améliorer la précision de la classification. 
-• Arbres de Décision (DT) : Structure arborescente où chaque nœud représente un test 
-sur une caractéristique, chaque branche un résultat et chaque feuille une classe 
-(groupe sanguin). 
-d. Évaluation 
-• Utilisation des métriques de performance telles que la précision, le rappel et le 
-F1-score pour évaluer la qualité des prédictions effectuées par les modèles.
+#  Blood Group Prediction from Fingerprints  
+
+##  1. Contexte et Motivation  
+La détermination du groupe sanguin est une étape essentielle en médecine, notamment pour :  
+- Les transfusions,  
+- Les greffes,  
+- Les situations d’urgence.  
+
+Les méthodes traditionnelles (tests sérologiques) sont souvent **coûteuses et chronophages**.  
+Ce projet explore une approche **innovante et non invasive** : prédire le groupe sanguin à partir des **empreintes digitales** en utilisant l’**apprentissage automatique**.  
+
+Les empreintes digitales, uniques et riches en caractéristiques (minuties, boucles, arches), peuvent offrir une **solution rapide, économique et fiable**.  
+
+---
+
+## 2. Dataset  
+Le dataset utilisé provient de Kaggle à telecharger avant :  
+ [Finger Print based Blood Group Dataset](https://www.kaggle.com/datasets/rajumavinmar/finger-print-based-blood-group-dataset/)  
+
+### Contenu du dataset :  
+- **Images d’empreintes digitales** : données brutes servant à l’extraction des caractéristiques.  
+- **Groupes sanguins associés** : chaque image est étiquetée selon le système **ABO (A, B, AB, O)** et le facteur **Rhésus (+ ou -)**.  
+- **Taille** : plus de **500 images par groupe sanguin**.  
+
+Les caractéristiques biométriques (minuties, arches, boucles, texture) peuvent être extraites via des techniques de **traitement d’image**.  
+
+---
+
+##  3. Objectifs du Projet  
+- Développer un modèle de **machine learning** capable de prédire le groupe sanguin à partir d’une empreinte digitale.  
+- Comparer différents algorithmes afin d’identifier le plus performant.  
+
+---
+
+##  4. Méthodologie  
+
+### a. Prétraitement des images  
+- Conversion en format exploitable par les modèles.  
+- Normalisation et redimensionnement pour homogénéiser les données.  
+
+### b. Extraction des caractéristiques  
+- Utilisation de **techniques de traitement d’images** pour extraire les minuties, arches, boucles et textures.  
+
+### c. Entraînement des modèles  
+Plusieurs algorithmes supervisés sont testés :  
+- **K-Nearest Neighbors (KNN)** : classification basée sur la proximité des voisins.  
+- **Support Vector Machine (SVM)** : séparation optimale des classes via un hyperplan.  
+- **Random Forest (RF)** : ensemble d’arbres de décision pour améliorer la robustesse.  
+- **Decision Tree (DT)** : classification hiérarchique basée sur des règles simples.  
+
+### d. Évaluation  
+Les performances des modèles sont mesurées à l’aide de métriques classiques :  
+- **Précision (Accuracy)**  
+- **Rappel (Recall)**  
+- **F1-score**  
+
+---
+
+##  5. Technologies Utilisées  
+- **Python**  
+- Bibliothèques principales :  
+  - `numpy`, `pandas` → manipulation des données  
+  - `opencv`, `scikit-image` → traitement d’images  
+  - `scikit-learn` → algorithmes de machine learning  
+  - `matplotlib`, `seaborn` → visualisation des résultats  
+
+---
